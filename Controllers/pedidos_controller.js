@@ -57,9 +57,64 @@ const deletePedido = async (req, res) => {
     }
 }
 
+const getPedidos = async (req, res) => {
+    try {
+        const pedidos = await Models.Pedido.findAll({
+            include: [
+                {
+                    model: Models.Cliente,
+                    attributes: ['idCliente', 'identificacion', 'nombre', 'apellido']
+                },
+                {
+                    model: Models.PedidoProducto,
+                    required: true,
+                    include: [
+                        {
+                            model: Models.Producto,
+                            required: true
+                        }, 
+                    ]
+                }
+            ]
+        });
+        res.status(200).json(pedidos);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
+const getPedidosCliente = async (req, res) => {
+    try {
+        const pedidos = await Models.Pedido.findAll({
+            where: {
+                idCliente: req.params.id
+            },
+            include: [
+                {
+                    model: Models.PedidoProducto,
+                    required: true,
+                    include: [
+                        {
+                            model: Models.Producto,
+                            required: true
+                        }
+                    ]
+                }
+            ]
+        });
+        res.status(200).json(pedidos);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
 export default {
     getPedido,
     postPedido,
     putPedido,
-    deletePedido
+    deletePedido,
+    getPedidos,
+    getPedidosCliente
 }

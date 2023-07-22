@@ -36,6 +36,8 @@ router.get('/pedidos/:id', pedidosController.getPedido);
 router.post('/pedidos', pedidosController.postPedido);
 router.put('/pedidos/:id', pedidosController.putPedido);
 router.delete('/pedidos/:id', pedidosController.deletePedido);
+router.get('/pedidos', pedidosController.getPedidos);
+router.get('/pedidosCliente/:id', pedidosController.getPedidosCliente);
 
 //pedidos productos
 router.get('/pedidosProd', pedidosProdController.getPedidosProd);
