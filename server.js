@@ -4,7 +4,7 @@
 import express from "express";
 import { router } from "./Routes/routes.js";
 import { sequelize } from "./Database/database.js";
-import { Producto } from "./Models/productos.js";
+//import { Producto } from "./Models/productos.js";
 import cors from "cors";
 
 //creo una instancia de express dentro de la aplicacion

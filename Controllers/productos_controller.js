@@ -1,4 +1,4 @@
-import { Producto } from "../Models/productos.js";
+import Producto from "../Models/productos.js";
 
 //funcion para obtener los productos
 //recuperar de la base de datos

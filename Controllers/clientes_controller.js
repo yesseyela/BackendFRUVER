@@ -1,40 +1,12 @@
-import Models from '../Models/index.js';
-import jwt from 'jsonwebtoken';
-
-const login = async (req, res) => {
-    try {
-        let { email, password } = req.body;
-        let cliente = await Models.Cliente.findOne({
-            attributes: ['idCliente', 'identificacion', 'nombre', 'apellido', 'email', 'rol'],
-            where: {
-                email: email,
-                contrasena: password
-            }
-        });
-        
-        if (cliente) {
-            console.log(cliente);
-            let data = JSON.stringify(cliente);
-            let token = jwt.sign(data, 'secretKey');
-            res.status(200).send({ token });
-        } else {
-            res.status(401).json({ message: 'Credenciales incorrectas' });
-        }
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: 'Error en el servidor' });
-    }
-
-}
+import Models from '../models/index.js';
 
 const getClientes = async (req, res) => {
-    try {
-        const clientes = await Models.Cliente.findAll();
-        res.status(200).json(clientes);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
-    }
+    try{
+        const productos = await Models.Cliente.findAll(); //encontrar con metodo find all
+        res.status(200).json(productos);
+      } catch (error){
+        res.status(400).json({mensaje: error});
+      }
 }
 
 const postCliente = async (req, res) => {
@@ -71,11 +43,9 @@ const deleteCliente = async (req, res) => {
     }
 }
 
-
 export default {
-    login,
     getClientes,
     postCliente,
     putCliente,
     deleteCliente
-};
+}

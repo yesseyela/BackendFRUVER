@@ -4,10 +4,7 @@ import { sequelize } from '../Database/database.js';
 //defino una constante llamada Producto
 //hago la relacion con la tabla productos
 // que tiene la tabla, idproducto, nombre y detalle
-const Producto = sequelize.define(
-    'productos', {
-  // aqui van los campos de la tabla, tal cual estan definidos en la base de datos
-  //le tengo que definir q es el tipo de dato
+const Productos = sequelize.define('productos', {
   idProducto: {
     type: DataTypes.INTEGER,
     allowNull: false, //NO PERMITE NULOS
@@ -27,6 +24,4 @@ const Producto = sequelize.define(
     timestamps: false
 });
 
-export {
-    Producto
-}
+export default Productos;
