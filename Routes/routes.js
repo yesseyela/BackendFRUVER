@@ -4,6 +4,7 @@ import { Router } from "express";
 import { postProducts, getProducts, getProduct, putProducts, deleteProducts } from "../Controllers/productos_controller.js";
 import clientesController  from "../controllers/clientes_controller.js";
 import pedidosController from "../controllers/pedidos_controller.js";
+import pedidosProdController from '../controllers/pedidosProductos_controller.js';
 
 
 //voy a crear una instancia de router
@@ -36,6 +37,11 @@ router.post('/pedidos', pedidosController.postPedido);
 router.put('/pedidos/:id', pedidosController.putPedido);
 router.delete('/pedidos/:id', pedidosController.deletePedido);
 
+//pedidos productos
+router.get('/pedidosProd', pedidosProdController.getPedidosProd);
+router.post('/pedidosProd', pedidosProdController.postPedidoProd);
+router.put('/pedidosProd/:id', pedidosProdController.putPedidoProd);
+router.delete('/pedidosProd/:id', pedidosProdController.deletePedidoProd);
 
 //exporto el modulo router
 export {

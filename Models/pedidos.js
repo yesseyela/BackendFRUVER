@@ -14,7 +14,7 @@ const Pedido = sequelize.define('pedidos', {
         type: DataTypes.DATE,
     },
     estado:{
-        type: DataTypes.STRING(100),
+        type: DataTypes.INTEGER(1),
     },
 }, {
     timestamps: false
