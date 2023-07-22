@@ -1,4 +1,4 @@
-import Models from '../Models/index.js';
+import Models from "../Models/index.js";
 
 const getPedidosProd = async (req, res) => {
     try {

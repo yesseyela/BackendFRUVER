@@ -1,57 +1,5 @@
-import Models from '../Models/index.js';
+import Models from '../models/index.js';
 
-const getPedidos = async (req, res) => {
-    try {
-        const pedidos = await Models.Pedido.findAll({
-            include: [
-                {
-                    model: Models.Cliente,
-                    attributes: ['idCliente', 'identificacion', 'nombre', 'apellido', 'email', 'rol']
-                },
-                {
-                    model: Models.PedidoProducto,
-                    required: true,
-                    include: [
-                        {
-                            model: Models.Producto,
-                            required: true
-                        }, 
-                    ]
-                }
-            ]
-        });
-        res.status(200).json(pedidos);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
-    }
-}
-
-const getPedidosCliente = async (req, res) => {
-    try {
-        const pedidos = await Models.Pedido.findAll({
-            where: {
-                idCliente: req.params.id
-            },
-            include: [
-                {
-                    model: Models.PedidoProducto,
-                    required: true,
-                    include: [
-                        {
-                            model: Models.Producto,
-                            required: true
-                        }
-                    ]
-                }
-            ]
-        });
-        res.status(200).json(pedidos);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
-    }
-}
 
 const getPedido = async (req, res) => {
     try {
@@ -110,10 +58,8 @@ const deletePedido = async (req, res) => {
 }
 
 export default {
-    getPedidosCliente,
-    getPedidos,
     getPedido,
     postPedido,
     putPedido,
     deletePedido
-};
+}
