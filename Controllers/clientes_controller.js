@@ -2,7 +2,7 @@ import Models from '../models/index.js';
 
 const getClientes = async (req, res) => {
     try{
-        const productos = await Models.Cliente.findAll(); //encontrar con metodo find all
+        const productos = await Models.Cliente.findAll(); 
         res.status(200).json(productos);
       } catch (error){
         res.status(400).json({mensaje: error});

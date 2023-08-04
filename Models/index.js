@@ -5,6 +5,7 @@ import Pedido from './pedidos.js';
 import PedidoProducto from './pedidoProducto.js';
 
 // Relaciones de la base de datos
+
 // cliente - pedido
 Cliente.hasMany(Pedido, {
     foreignKey: 'idCliente',

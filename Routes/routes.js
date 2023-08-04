@@ -1,14 +1,9 @@
-//voy a importar dentro de este archivo 
-
 import { Router } from "express";
 import { postProducts, getProducts, getProduct, putProducts, deleteProducts } from "../Controllers/productos_controller.js";
 import clientesController  from "../controllers/clientes_controller.js";
 import pedidosController from "../controllers/pedidos_controller.js";
 import pedidosProdController from '../controllers/pedidosProductos_controller.js';
 
-
-//voy a crear una instancia de router
-//este es el manejador de rutas
 const router = Router();
 
 //defino las rutas
@@ -27,7 +22,6 @@ router.delete('/clientes/:id', clientesController.deleteCliente);
 router.get("/productos", getProducts);
 router.get("/productos/:idProducto", getProduct);
 router.post('/productos', postProducts);
-//le envio el id del producto para que lo reciba en el controlador
 router.put ('/productos/:idProducto', putProducts);
 router.delete('/productos/:idProducto', deleteProducts);
 
