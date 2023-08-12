@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 
 // clientes
 router.get('/clientes', clientesController.getClientes);
+router.get('/clientes/:id', clientesController.getCliente);
 router.post('/clientes', clientesController.postCliente);
 router.put('/clientes/:id', clientesController.putCliente);
 router.delete('/clientes/:id', clientesController.deleteCliente);

@@ -19,7 +19,7 @@ const Productos = sequelize.define('productos', {
   },
     precio: {
     type: DataTypes.INTEGER,
-    },
+  },
 }, {
     timestamps: false
 });

@@ -9,6 +9,17 @@ const getClientes = async (req, res) => {
       }
 }
 
+const getCliente = async (req, res) => {
+    try{
+        const { id } = req.params;
+        const cliente = await Models.Cliente.findByPk(id);
+        res.status(200).json(cliente);
+        } catch (error){
+        res.status(400).json({mensaje: error});
+        }
+}
+
+
 const postCliente = async (req, res) => {
     try {
         const cliente = await Models.Cliente.create(req.body);
@@ -45,6 +56,7 @@ const deleteCliente = async (req, res) => {
 
 export default {
     getClientes,
+    getCliente,
     postCliente,
     putCliente,
     deleteCliente
